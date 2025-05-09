@@ -1,21 +1,11 @@
 
 
 Notify = function (title,description,type)
-
-    if Config.notify == 'ox_lib' then
     lib.notify({
         title = title,
         description = description,
         type = type
     })
-    else
-        XNotify({
-            title = title,
-            icon = 'network_intelligence',
-            duration = '2000',
-            description = description,
-        })
-    end
 end
 
 NuiMessage = function (action,data)
@@ -24,6 +14,14 @@ NuiMessage = function (action,data)
         data = data
     })
 end
+
+
+HelpText = function(text, sound)
+    AddTextEntry(GetCurrentResourceName(), text)
+    BeginTextCommandDisplayHelp(GetCurrentResourceName())
+    EndTextCommandDisplayHelp(0, 0, (sound == true), -1)
+end
+
 
 
 
