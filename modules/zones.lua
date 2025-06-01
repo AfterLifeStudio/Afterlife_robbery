@@ -29,7 +29,7 @@ CreateThread( function ()
                         local obj = GetClosestObjectOfType(data.start.x,data.start.y,data.start.z,5,model,false,false,false)
                         local doorheading = GetEntityHeading(obj) + -80
                         SetEntityHeading(obj, doorheading)
-                        trolley = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), data.trolley.x, data.trolley.y,data.trolley.z, false, 1, 0)
+                        trolley = CreateObject(GetHashKey("hei_prop_hei_cash_trolly_01"), data.trolley.x, data.trolley.y,data.trolley.z, true, 1, 0)
                         lib.callback.await('Server:Trigger:Robbery', false, i, doorheading)
                     end
                 
@@ -73,6 +73,31 @@ CreateThread( function ()
             HelpText('~INPUT_CONTEXT~ Hacking',true)
             if  IsControlJustReleased(0, 38) then
                 GrabTrolly(trolleycoords)
+            end
+        end
+    end
+    
+    Wait(0)
+   end 
+end)
+
+
+CreateThread( function ()
+   while true do
+    if alreadyinzone and GlobalState.RobStatus then
+        local robdata = GlobalState.RobStatus
+        local pedcoords = GetEntityCoords(PlayerPedId())
+        local doorcoords = robdata.lockpickdoor
+        
+        local distance = #(pedcoords - doorcoords)
+
+        if distance < 1.5 then
+            HelpText('~INPUT_CONTEXT~ Lockpick',true)
+            if  IsControlJustReleased(0, 38) then
+                local obj = GetClosestObjectOfType(doorcoords.x,doorcoords.y,doorcoords.z,5,'v_ilev_gb_teldr',false,false,false)
+                local heading = GetEntityHeading(obj)
+                SetEntityHeading(obj, heading - 100)
+                
             end
         end
     end

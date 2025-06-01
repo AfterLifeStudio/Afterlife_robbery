@@ -16,6 +16,14 @@ NuiMessage = function (action,data)
 end
 
 
+DuiMessage = function (object,action,data)
+    SendDuiMessage(object,json.encode({
+        action = action,
+        data = data
+    }))
+end
+
+
 HelpText = function(text, sound)
     AddTextEntry(GetCurrentResourceName(), text)
     BeginTextCommandDisplayHelp(GetCurrentResourceName())

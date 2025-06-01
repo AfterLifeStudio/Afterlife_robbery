@@ -19,6 +19,7 @@ Config.framework = GetFramework() -- qb / esx /qbox /ox
 
 Config.Zones = {
     {
+        lockpickdoor = vec3(145.1074, -1041.2355, 29.3679), 
         start = vec3(146.9526, -1046.1156, 29.3681),
         trolley = vec3(150.5140, -1046.2781, 28.346),
     }

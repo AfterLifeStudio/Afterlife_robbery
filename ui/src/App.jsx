@@ -1,22 +1,26 @@
 import './App.css'
-import Hud from './components/Hud'
+
 import { useState } from 'react';
 import Fade from './utils/fade';
 import { NuiEvent } from './hooks/NuiEvent';
+import Desktop from './components/desktop.jsx'
 function App() {
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   
   const handlevisible = (data) => {
+
     setVisible(data);
   };
-  NuiEvent("visiblehud", handlevisible);
+  NuiEvent("desktop", handlevisible);
+
+
 
 
   return (
     <>
     <Fade in={visible}>
-      <Hud />
+      <Desktop />
     </Fade>
     </>
   )

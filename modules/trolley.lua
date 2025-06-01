@@ -33,16 +33,17 @@ function GrabTrolly(coords)
         NetworkRequestControlOfEntity(sceneObject)
     end
 
-    local objectcoords = GetEntityCoords(sceneObject)
-
+    local sceneObjectcoords = GetEntityCoords(sceneObject)
+    local sceneObjectrotation = GetEntityRotation(sceneObject)
     for i = 1, #Trolly['animations'] do
-
-        Trolly['scenes'][i] = NetworkCreateSynchronisedScene(objectcoords.x,objectcoords.y,objectcoords.z, GetEntityRotation(sceneObject),2, true, false, 1065353216, 0, 1.3)
+        Trolly['scenes'][i] = NetworkCreateSynchronisedScene(sceneObjectcoords.x, sceneObjectcoords.y,sceneObjectcoords.z, sceneObjectrotation.x, sceneObjectrotation.y, sceneObjectrotation.z, 2, true, false,1065353216, 0, 1.3)
 
         NetworkAddPedToSynchronisedScene(ped, Trolly['scenes'][i], animDict, Trolly['animations'][i][1], 1.5, -4.0, 1, 16,1148846080, 0)
         NetworkAddEntityToSynchronisedScene(bag, Trolly['scenes'][i], animDict, Trolly['animations'][i][2], 4.0, -8.0, 1)
         if i == 2 then
+            print(Trolly['scenes'][i],i)
             NetworkAddEntityToSynchronisedScene(sceneObject, Trolly['scenes'][i], animDict, "cart_cash_dissapear", 4.0,-8.0, 1)
+                  print(Trolly['scenes'][i],i)
         end
     end
 
@@ -57,7 +58,7 @@ function GrabTrolly(coords)
     local emptyobj = 769923921
     newTrolly = CreateObject(emptyobj, coords, true, false, false)
     SetEntityRotation(newTrolly, 0, 0, GetEntityHeading(sceneObject), 1, 0)
-    DeleteObject(sceneObject)
+    -- DeleteObject(sceneObject)
     DeleteObject(bag)
     grabNow = false
 end
@@ -94,7 +95,7 @@ function CashAppear(grabModel)
         while GetGameTimer() - startedGrabbing < 37000 do
             Citizen.Wait(1)
             DisableControlAction(0, 73, true)
-            print(HasAnimEventFired(ped, GetHashKey("CASH_APPEAR")))
+
             if HasAnimEventFired(ped, GetHashKey("CASH_APPEAR")) then
                 if not IsEntityVisible(grabobj) then
                     SetEntityVisible(grabobj, true, false)

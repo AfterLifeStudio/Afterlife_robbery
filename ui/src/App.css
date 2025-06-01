@@ -1,587 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kdam+Thmor+Pro&display=swap');
 
-* {
-  --maincolor: #88cfcd;
-  --width: 13vw;
-  --height: 13vw;
-  user-select: none;
-}
-
-img{
-  transition: 600ms ease;
-}
-
-:root {
-  --voiceval: #88cfcd;
-}
-
-@font-face {
-  font-family: pricedown;
-  src: url(./assets/font/pricedown.otf);
-}
-
-
-body {
-  /* background-color: rgb(40, 40, 40); */
+body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-
-
-
-.minimap{
+.desktop {
+  width: 1080px;
+  height: 1080px;
   position: absolute;
-  bottom: 0vw;
-  left: 2vw;
+  background-color: red;
+}
+
+.wallpaper{
+  position: absolute;
+width: 100%;
+height: 100%
+}
+
+.application{
+  position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  gap: 0.5vw;
-  height: 17.2vw;
-}
-
-.playerstatus{
-  position: relative;
-  right: -1.3vw;
-  display: flex;
-  gap: 0.5vw;
-  flex-direction: row;
-}
-
-.status{
-  position: relative;
-  width: 2vw;
-  height: 2vw;
-  border-radius: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 0.15vw solid white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 500ms ease;
-}
-
-
-
-
-.status img{
-  width: 1vw;
-  opacity: 0.4;
-}
-
-.status .value {
-  position: absolute;
-  opacity: 1;
-}
-
-.map{
-  width: 11vw;
-  height: 11vw;
-  border-radius: 100%;
-  border: 0.15vw solid #E6E6E6;
-  transition: 200ms ease;
-}
-
-.north{
-  position: relative;
-  left: 5vw;
-  bottom: .6vw;
-  width: 1vw;
-  height: 1vw;
-  border-radius: 100%;
-  border: 0.2vh solid white;
-  color: white;
-  font-weight: 500;
-  font-size: 0.8vw;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Inter;
-  transition: 200ms ease;
-}
-
-.distance{
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  bottom: 0.5vw;
-  gap: 0.2vw;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.6);
-  font-family: Inter;
-}
-
-.distance svg{
-  width: .6vw;
-  fill: rgba(255, 255, 255, 0.6);
-}
-
-
-
-.info-wrapper {
-  position: absolute;
-  top: 2.5vw;
-  right: 2vw;
-}
-
-.info-container{
-  display: flex;
-  flex-direction: row;
-  gap: 0.5vw;
-}
-
-.info{
-  color: white;
-  padding: .45vw .7vw;
-  border-radius: 0.5vw;
-  background-color: rgba(24, 24, 24, 0.5);
-  font-size: 0.6vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   gap: 0.3vw;
-  font-family: 'Kdam Thmor Pro' !important;
-}
-
-.info svg{
-  height: .7vw;
-  fill: white;
-}
-
-
-.transition-fade-enter {
-  opacity: 0;
-}
-
-.transition-fade-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-
-.transition-fade-exit {
-  opacity: 1;
-}
-
-.transition-fade-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
-}
-
-
-
-.material-symbols-outlined {
-  color: #0F0F0F;
-  font-size: 30px;
-}
-
-.speedometer{
-  position: absolute;
-  bottom: 2vw;
-  right: 2vw;
-  transform-origin: bottom right;
-}
-
-.speedometer-inner{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Kdam Thmor Pro' !important;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.4vw;
+  padding: 0.4vw;
 }
 
-.speedometer-inner .si-unit{
-  color: rgba(255, 255, 255, 0.716);
-  font-size: 0.8vw;
-  position: relative;
-  top: 0.5vw;
+.application:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.267);
 }
 
-.speedometer-inner .velocity{
+.trojan {
+  top: 3vw;
+  left: 4vw;
+}
+.logout{
+  bottom: 3vw;
+  right: 4vw;
+
+}
+
+.logout img{
+  width: 2.4vw !important;
+}
+
+.application img{
+  width: 3vw;
+}
+.application div{
+  font-family: 'Courier New', Courier, monospace;
+  text-shadow: 0 0 5px black;
   color: white;
-  font-size: 3vw;
-  line-height: 3vw;
-  width: 6vw;
-}
-
-.speedometer-inner .gear{
-  color: white;
-  width: 1.6vw;
-  height: 1.6vw;
-  border-radius: 100%;
-  font-size: 1vw;
-  background-color: rgba(0, 0, 0, 0.542);
-  border: 0.2vh solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fuelengine{
-  position: absolute;
-  top: 0;
-  width: fit-content;
-  transform: scale(1.08) rotate(135deg);
-  clip-path: polygon(50% 0, 50% 50%, 100% 50%, 100% 100%, 0 100%, 0 0);
-}
-
-.speed-icons{
-  position: absolute;
-  bottom: 0vw;
-  width: 100%;
-  height: 2vw;
-  display: flex;
-  justify-content: space-between;
-}
-
-.speed-icons svg{
-  height: .7vw;
-  fill: white;
-  margin: 0vw 2.2vw;
-}
-
-.rpm{
-  width: fit-content;
-  transform: scale(0.9) rotate(135deg);
-  /* background-color: red; */
-  clip-path: polygon(50% 0, 50% 50%, 100% 50%, 100% 100%, 0 100%, 0 0);
-
-}
-
-.rpm-numbers{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-
-}
-
-.rpm-numbers .number{
-  position: absolute;
-  font-size: 0.7vw;
-  color: rgba(255, 255, 255, 0.503);
-  margin-left: -0.2vw;
-  margin-top: -0.3vw;
-  font-family: Kdam Thmor Pro;
-}
-
-.compass-wrapper{
-  position: absolute;
-  top: 4vw;
-  left: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  gap: 0.5vw;
-  transform-origin: center;
-}
-
-.location{
-  color: #E6E6E6;
-  font-size: 0.6vw;
-  font-family: Kdam Thmor Pro;
-}
-
-.compass-container .line{
-  width: 21vw;
-  height: 0.1vw;
-  background-color: #DBDBDB;
-
-  --mask: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%,  rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
-  -webkit-mask: var(--mask);
-  mask: var(--mask);
-}
-
-.compass-icons{
-  width: 100%;
-  height: 1.4vw;
-
-  /* overflow: hidden; */
-
-  --mask: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%,  rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
-
-  -webkit-mask: var(--mask);
-  mask: var(--mask);
-}
-
-.compass-icons img{
-  position: absolute;
-  left: -30vw;
-  height: 1vw;
-}
-
-.direction {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  bottom: 2vw;
-}
-
-.direction div{
-  width: .8vw;
-  height: 0.4vw;
-  clip-path: polygon(50% 100%, 0 0, 100% 0);
-  background-color: #D9D9D9;
-}
-
-.direction p{
-  position: relative;
-  top: 0.8vw;
-  color: #D9D9D9;
-  font-size: 0.8vw;
-  font-family: Kdam Thmor Pro;
 }
 
 
 
-
-.textui {
-
-  width: fit-content;
-
-  position: absolute;
-  bottom: 30%;
-  right: 50%;
-  transform: translate(50%,-50%);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: .5vw;
-  color: white;
-  font-family: Inter;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: 200ms;
-}
-
-@keyframes textui {
-  0%{
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-  }
-  100%{
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-}
-
-@keyframes notification {
-  0%{
-    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
-  }
-  100%{
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  }
-}
-
-
-.textui-icon{
-  width: 1.5vw;
-  height: 1.5vw;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotate(45deg);
-  z-index: 1;
-}
-
-.textui-text{
-  position: relative;
-  right: 1vw;
-  min-width: 4vw;
-  padding: 0.5vw 1.2vw;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.494) 0%, rgba(0, 0, 0, 0.155) 100%);
-  font-size: .8vw;
-}
-
-.textui-icon span {
-  font-size: 1.3vw;
-  transform: rotate(-45deg);
-}
-
-
-.notifications{
-  position: absolute;
-  top: 2.5vw;
-  left: 3vw;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5vw;
-  font-family: Kdam Thmor Pro;
-}
-
-.notification-wrapper {
-  animation: kill forwards;
-}
-
-
-.notification-container{
-  min-height: 3vw;
-  width: 17vw;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.25) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.notification-title{
-  padding-top: 0.5vw;
-  padding-left: 1vw;
-  color: white;
-  font-size: .8vw;
-}
-
-.notification-description{
-  padding-left: 1vw;
-  font-size: 0.6vw;
-  color: #ACACAC;
-  padding-bottom: 0.5vw;
-}
-
-
-.notification-line{
-  width: 17vw;
-  height: 0.1vw;
-
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7) 0%, rgba(231, 231, 231, 0.15) 100%);
-}
-
-.notification-icon{
-  position: absolute;
-  margin-top: -.2vw;
-  margin-left: -.5vw;
-  background-color: #FFFFFF;
-  width: 1.2vw;
-  height: 1.2vw;
-  transform: rotate(45deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.notification-icon span{
-  font-size: .8vw;
-  transform: rotate(-45deg);
-}
-
-
-.seatbelt{
+.trojan-application{
   position: absolute;
   top: 50%;
-  right: 30%;
+  left: 50%;
   transform: translate(-50%,-50%);
-  width: 3vw;
-  height: 3vw;
-  border-radius: 100%;
-  animation: fadeseatbelt 1000ms infinite;
-  /* background-color: rgba(0,0,0,0.5); */
-}
-
-
-.seatbelt .top{
-  position: absolute;
-  height: 2vw;
-  filter: invert(.8);
-  top: 0vw;
-  left: 1vw;
-  animation: seatbelt 1000ms forwards;
-}
-
-.seatbelt .bottom{
-  position: absolute;
-  height: 2vw;
-  filter: invert(.8);
-  animation: seatbelt2 1000ms forwards;
-  top: 1.5vw;
-  left: -0.5vw;
-}
-
-
-
-@keyframes fadeseatbelt{
-  0%{
-    opacity: 0.5;
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0.5;
-  }
-}
-
-@keyframes seatbelt2{
-  0%{
-    opacity: 1;
-  }
-  60%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}
-
-@keyframes seatbelt{
-  0%{
-    top: 0vw;
-    left: 1vw;
-    opacity: 1;
-  }
-  60%{
-    top: 1vw;
-    left: 0vw;
-    opacity: 1;
-  }
-  100%{
-    top: 1vw;
-    left: 0vw;
-    opacity: 0;
-  }
-}
-
-
-
-svg circle.circlerpm {
-  position: absolute;
-  stroke-dashoffset: 220%;
-  stroke-dasharray: 220%;
-  stroke-linecap: round;
-  transition: 600ms ease;
-  
-}
-
-svg circle.circlea {
-  position: absolute;
-  stroke-dashoffset: 80%;
-  stroke-dasharray: 200%;
-  stroke-linecap: round;
-  transition: 600ms ease;
-  
-}
-
-svg circle.outline {
-  stroke-dashoffset: 80%;
-  stroke-dasharray: 300%;
-  stroke-linecap: round;
-  transition: 600ms ease;
-
-}
-
-@keyframes kill {
-  0%{
-    display: block;
-  }
-  100%{
-    display: none;
-  }
+  width: 50%;
+  height: 30vw;
+  background-color: black;
 }
